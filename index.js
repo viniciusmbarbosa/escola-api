@@ -1,10 +1,11 @@
 
 //Importando o express
 import express from 'express';
-import{ ler, inserir } from './src/aluno.js';
+import{ ler, inserir, lerUM, atualizar, excluir} from './src/aluno.js';
 
 
 const app = express();
+const porta = process.env.PORT ||  3306;
 
 // adicionando suporte ao formato json
 app.use(express.json()); 
@@ -24,7 +25,9 @@ app.get('/alunos', (req, res) => {
 })
 
 app.get('/alunos/:id', (req, res) => {
-    res.send(`Exibindo dados de UM aluno`)
+    /* res.send(`Exibindo dados de UM aluno`) */
+    const id = parseInt(req.params.id);
+    lerUM(id,res);
 })
 
 app.post('/alunos', (req, res) => {
@@ -34,18 +37,24 @@ app.post('/alunos', (req, res) => {
 })
 
 app.patch('/alunos/:id', (req, res) => {
-    res.send(`Atualizando dados de UM aluno`)
+    /* res.send(`Atualizando dados de UM aluno`) */
+    const id = parseInt(req.params.id);
+    const aluno = req.body;
+    atualizar(id,aluno, res); 
+    
 })
 
 //excluindo alunos
 app.delete('/alunos/:id', (req, res) => {
-    res.send(`Excluindo alunos`)
+    /* res.send(`Excluindo alunos`) */
+    const id = parseInt(req.params.id);
+    excluir(id, res)
 })
 
 
 
 // Executando o servidor
-const porta = 8080;
+
 app.listen(porta, () =>{
     console.log(`Servidor NodeJS rodando na porta ${porta}`);
 

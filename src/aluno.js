@@ -33,4 +33,47 @@ function inserir(aluno, res){
     });
 }
 
-export{ler, inserir};
+//LER UM ALUNO
+function lerUM(id, res){
+    const sql = "SELECT * FROM alunos WHERE id = ?";
+    conexao.query(sql, id, (erro, resultado) => {
+        if(resultado === 0){
+        res.status(204).end();
+        return;
+    }
+    if(erro){
+        res.status(400).json(erro.code);
+    }else{
+        res.status(200).json(resultado[0]);
+    }
+    })
+
+}
+
+//Atualizar todos/alguns dados de um aluno
+function atualizar(id, aluno, res){
+    const sql = "UPDATE alunos SET ? WHERE id = ?";
+    conexao.query(sql, [aluno, id], (erro, resultado) => {
+        if(erro){
+            res.status(400).json(erro.code);
+        }else{
+            /* res.status(200).json({"status" : "atualizado com sucesso"}); */
+            res.status(200).json({...aluno,id});
+        }
+    });
+}
+
+// EXCLUIR aluno da base de dados
+function excluir(id, res) {
+    const sql = "DELETE FROM alunos WHERE id = ?"
+
+    conexao.query(sql, id, (erro, resultado) => {
+        if(erro){
+            res.status(400).json(erro.code);
+        }else{
+            res.status(200).json( {"Status" : "Aluno excluído", id})
+        }
+    });
+}
+
+export{ler, inserir, lerUM, atualizar, excluir};
