@@ -2,6 +2,7 @@
 //Importando o express
 import express from 'express';
 import{ ler, inserir, lerUM, atualizar, excluir} from './src/aluno.js';
+import cors from 'cors';
 
 
 const app = express();
