@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 app.get('/', (req, res) => {
-    res.send(`Raiz da API NodeJS + Express + MySQL`);
+    res.redirect(`https://documenter.getpostman.com/view/29885803/2s9YJZ34cm`);
 });
 
 
