@@ -1,19 +1,19 @@
-/* import mysql2 from 'mysql2';
-
+import mysql2 from 'mysql2';
+/* 
 const conexao = mysql2.createConnection({
     host : 'localhost',
     user : 'root',
-    passoword : '',
+    password : '',
     database : 'escola'
 }); */
 
 //BANCO DE DADOS DB4FREE
 
 const conexao = mysql2.createConnection({
-    host : 'DB4FREE.NET',
-    user : 'senaquinho',
-    passoword : 'Senac*123',
-    database : 'apiescola1'
+    host : 'db4free.net',
+    user : 'senacao',
+    password : 'Senac*123',
+    database : 'apiescola23'
 })
 // Efetivando a conexão
 // conexao.connect();
