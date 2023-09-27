@@ -11,9 +11,9 @@ const conexao = mysql2.createConnection({
 
 const conexao = mysql2.createConnection({
     host : 'db4free.net',
-    user : 'senacao',
-    password : 'Senac*123',
-    database : 'apiescola23'
+    user : 'senaquinho',
+    password : 'Senac#123',
+    database : 'apiescola1'
 })
 // Efetivando a conexão
 // conexao.connect();
